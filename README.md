@@ -1,9 +1,8 @@
 # Neural machine translation with attention model
 > Modelo treinado para fazer a tradução de frases em português para o inglês.
 
-[![NPM Version][npm-image]][npm-url]
-[![Build Status][travis-image]][travis-url]
-[![Downloads Stats][npm-downloads]][npm-url]
+[![Python 3.6](https://img.shields.io/badge/python-3.6-blue.svg)](https://www.python.org/downloads/release/python-360/)
+[![Tensorflow 2](https://img.shields.io/badge/Tensorflow-2.3-orange)](https://www.tensorflow.org/install?hl=pt-br)
 
 O modelo sequence-to-sequence é um modelo comulmente usado para fazer tarefas de tradução, onde pode ser chamado de 'tradução de máquina'. Desse modo, é possível que o computador possa entender aspectos de uma determinada entrada, e poder disponibilizar na saída algum tipo de informação. A tradução de textos é um bom exemplo desse poderoso recurso que o modelo sequence-to-sequence pode oferecer.
 
