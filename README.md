@@ -1,11 +1,11 @@
-# Nome do produto
-> Descrição curta sobre o que seu projeto faz.
+# Neural machine translation with attention model
+> Modelo treinado para fazer a tradução de frases em português para o inglês.
 
 [![NPM Version][npm-image]][npm-url]
 [![Build Status][travis-image]][travis-url]
 [![Downloads Stats][npm-downloads]][npm-url]
 
-De um a dois parágrafos sobre o que é seu projeto e o que ele faz.
+O modelo sequence-to-sequence é um modelo comulmente usado para fazer tarefas de tradução, onde pode ser chamado de 'tradução de máquina'. Desse modo, é possível que o computador possa entender aspectos de uma determinada entrada, e poder disponibilizar na saída algum tipo de informação. A tradução de textos é um bom exemplo desse poderoso recurso que o modelo sequence-to-sequence pode oferecer.
 
 ![](../header.png)
 
