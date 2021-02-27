@@ -329,13 +329,8 @@ def predict(sentence):
   return result, sentence, attention_plot
 ```
 
-#### Resultado da tradução de uma frase em ptbr para en.
+#### Resultado da tradução de uma frase em PTBR para EN.
 
-
-## Testando fazer a tradução de uma frase
-```py
-
-```
 
 ## Exemplo de uso
 
