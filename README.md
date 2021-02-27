@@ -259,9 +259,83 @@ history = model.fit(x = input_tensor_train[:-56],
           callbacks=[red_lr, ckpt, early_stop])
 ```
 
-## Grafico da função de perda no treinamento:
+## Grafico da função de perda no treinamento
+![bahdanau](/images/loss.png)
+
+## Previsão usando o modelo treinado
+
+#### Função para a plotagem do gráfico de pesos de acordo com as palavras previstas
+```py
+# function for plotting the attention weights
+def plot_attention(attention, sentence, predicted_sentence):
+  fig = plt.figure(figsize=(10,10))
+  ax = fig.add_subplot(1, 1, 1)
+  ax.matshow(attention, cmap='viridis')
+
+  fontdict = {'fontsize': 14}
+
+  ax.set_xticklabels([''] + sentence, fontdict=fontdict, rotation=90)
+  ax.set_yticklabels([''] + predicted_sentence, fontdict=fontdict)
+
+  ax.xaxis.set_major_locator(ticker.MultipleLocator(1))
+  ax.yaxis.set_major_locator(ticker.MultipleLocator(1))
+
+  plt.show()
+```
+
+#### Função para fazer a previsão
+
+```py
+def predict(sentence):
+  attention_plot = np.zeros((max_length_targ, max_length_inp)) #getting matrix vector to storage attentions vector predicted
+
+  sentence = preprocess_sentence(sentence) # preprocess the input setense
+
+  inputs = [inp_lang.word_index[i] for i in sentence.split(' ')] # transform all the inputs setense word in tokens 
+
+  inputs = tf.keras.preprocessing.sequence.pad_sequences([inputs],
+                                                         maxlen=max_length_inp,
+                                                         padding='post') # nomalization of the setense to have the same lenght as requirid in input layer network
+  inputs = tf.convert_to_tensor(inputs) #converts the inputs in tensors
+
+  result = ''
+
+  hidden = [tf.zeros((1, units))] #Creating the hidden inicial state to pass to encoder layer
+  enc_out, enc_hidden = model.layers[0](inputs, hidden) # predicting with encoder
+
+  one_hidden = enc_hidden #encoder hidden state autput wil be passed to one step decoder
+  one_input = tf.expand_dims([targ_lang.word_index['<start>']], 0) #first input will be the start token <start>
+
+  for t in range(max_length_targ):
+    predictions, one_hidden, attention_weights = model.layers[1].onestep(one_input,
+                                                                         enc_out,
+                                                                         one_hidden) #call the one step layer to get predicton on the input setense
+    
+    print(predictions.shape)
+    # storing the attention weights to plot later on
+    attention_weights = tf.reshape(attention_weights, (-1, ))
+    attention_plot[t] = attention_weights.numpy()
+
+    predicted_id = tf.argmax(predictions[0]).numpy() # getting the max value in predict correspondent to the most scored word
+
+    result += targ_lang.index_word[predicted_id] + ' ' #concatenating eat word predicted
+
+    if targ_lang.index_word[predicted_id] == '<end>': #checking if the sentense ends
+      return result, sentence, attention_plot
+
+    # the predicted ID is fed back into the model
+    one_input = tf.expand_dims([predicted_id], 0)
+
+  return result, sentence, attention_plot
+```
+
+#### Resultado da tradução de uma frase em ptbr para en.
 
 
+## Testando fazer a tradução de uma frase
+```py
+
+```
 
 ## Exemplo de uso
 
