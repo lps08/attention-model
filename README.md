@@ -330,12 +330,7 @@ def predict(sentence):
 ```
 
 #### Resultado da tradução de uma frase em PTBR para EN.
-
-
-## Exemplo de uso
-
-Alguns exemplos interessantes e úteis sobre como seu projeto pode ser utilizado. Adicione blocos de códigos e, se necessário, screenshots.
-
+![predict](/images/predict.png)
 
 ## Contributing
 
