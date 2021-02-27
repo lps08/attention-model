@@ -216,7 +216,7 @@ class Encoder_decoder(tf.keras.Model):
 
 ## Treinamento
 
-O processo de treinamento é dado intanciando a classe Encoder-decoder.
+O processo de treinamento é dado instanciando a classe Encoder-decoder.
 ```py
 model = Encoder_decoder(vocab_inp_size,
                         vocab_tar_size, 
