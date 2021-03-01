@@ -1,5 +1,5 @@
 # Neural machine translation with attention model PTBR-TO-ENGLISH
-> Model trained to translate Brazilian Portuguese phrases into English.
+> Model trained to translate Brazilian Portuguese sentences into English.
 
 [![Python 3.6](https://img.shields.io/badge/python-3.6-blue.svg)](https://www.python.org/downloads/release/python-360/)
 [![Tensorflow 2](https://img.shields.io/badge/Tensorflow-2.3-orange)](https://www.tensorflow.org/install?hl=pt-br)
